@@ -250,10 +250,14 @@ const privacyLabel = consent?.privacyLabel ?? footerStrings.privacyPolicy ?? 'Pr
     */}
     {(gaId || adsenseClient || adsEnabled) && (
       <script is:inline define:vars={{ gaId, adsenseClient }}>
+        window.__awStopTrackers = () => {
+          if (gaId) window['ga-disable-' + gaId] = true;
+        };
         window.__awLoadTrackers = () => {
           if (window.__awTrackersLoaded) return;
           window.__awTrackersLoaded = true;
           if (gaId) {
+            window['ga-disable-' + gaId] = false;
             const s = document.createElement('script');
             s.async = true;
             s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
@@ -263,7 +267,18 @@ const privacyLabel = consent?.privacyLabel ?? footerStrings.privacyPolicy ?? 'Pr
               dataLayer.push(arguments);
             }
             gtag('js', new Date());
-            gtag('config', gaId);
+            // Basic consent mode: this loader only runs after explicit acceptance.
+            // Analytics consent does not grant Google advertising permissions.
+            gtag('consent', 'default', {
+              analytics_storage: 'granted',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+            });
+            gtag('config', gaId, {
+              allow_google_signals: false,
+              allow_ad_personalization_signals: false,
+            });
           }
           if (adsenseClient) {
             const s = document.createElement('script');

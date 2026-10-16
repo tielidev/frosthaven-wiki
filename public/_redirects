@@ -1,1 +1,2 @@
-https://www.frosthaven.wiki/* https://frosthaven.wiki/:splat 301
+# Host redirects are configured in Cloudflare Bulk Redirects.
+# Pages _redirects supports path rules, not source host matching.

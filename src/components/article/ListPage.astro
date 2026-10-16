@@ -108,7 +108,7 @@ const jsonLd = [
             const slug = parseEntryId(entry.id)?.slug ?? '';
             return (
               <a href={detailPath(category, slug, locale)} class="card library-card p-5" data-library-entry data-role={entry.data.role} data-availability={entry.data.availability} data-search={`${entry.data.title} ${entry.data.description} ${entry.data.role || ''} ${entry.data.tags.join(" ")}`}>
-                {entry.data.portrait ? <img class="entity-portrait" src={entry.data.portrait} alt={entry.data.title} width="480" height="550" loading="lazy" /> : entry.data.image && <ArticleCover src={entry.data.image} alt={entry.data.title} />}
+                {entry.data.image && <ArticleCover src={entry.data.image} alt={entry.data.coverAlt || entry.data.title} />}
                 <h2 class="font-semibold leading-snug">{entry.data.title}</h2>
                 {entry.data.role && <p class="eyebrow">{entry.data.role}</p>}
                 <p class="mt-1 line-clamp-2 text-sm text-muted-foreground">

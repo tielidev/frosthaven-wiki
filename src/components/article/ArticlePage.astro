@@ -64,8 +64,7 @@ const slug = parsed?.slug ?? '';
 const category = entry.data.category;
 const categoryLabel = overview?.overviewTitle ?? nav[category] ?? category;
 
-const enemyPortrait = category === 'enemies' ? entry.data.portrait : undefined;
-const coverUrl = enemyPortrait ? `${siteUrl}${enemyPortrait}` : entry.data.image
+const coverUrl = entry.data.image
   ? `${siteUrl}${entry.data.image.src}`
   : `${siteUrl}/images/hero.webp`;
 
@@ -173,8 +172,8 @@ const jsonLd = [
   article={true}
   jsonLd={jsonLd}
   noindex={entry.data.noindex || isFallback}
-  ogImageWidth={enemyPortrait ? undefined : entry.data.image?.width}
-  ogImageHeight={enemyPortrait ? undefined : entry.data.image?.height}
+  ogImageWidth={entry.data.image?.width}
+  ogImageHeight={entry.data.image?.height}
   articlePublished={entry.data.date}
   articleModified={entry.data.lastModified}
   contentLocale={servedLocale}
@@ -263,7 +262,7 @@ const jsonLd = [
       </div>
     </header>
 
-    {(entry.data.image || enemyPortrait) && <figure class="article-hero">{enemyPortrait ? <img class="enemy-portrait" src={enemyPortrait} alt={entry.data.title} width="1000" height="850" /> : entry.data.image && <ArticleCover src={entry.data.image} alt={entry.data.title} sizes="(max-width: 900px) 100vw, 850px" />}<figcaption>{ui.frontier.mediaCredit}</figcaption></figure>}
+    {entry.data.image && <figure class="article-hero"><ArticleCover src={entry.data.image} alt={entry.data.coverAlt || entry.data.title} sizes="(max-width: 900px) 100vw, 850px" /><figcaption>{entry.data.coverCaption || ui.frontier.mediaCredit}</figcaption></figure>}
     {/* Quick Answer / TL;DR — answer-first for AI Overviews & featured snippets */}
     {summary && (
       <aside class="mt-6 rounded-lg border-l-4 border-nav bg-nav/5 p-4">

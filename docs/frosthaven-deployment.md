@@ -7,9 +7,18 @@
 - Production branch: `main`
 - Build: `pnpm build`; output: `dist`; Node: 22
 - Canonical domain: `https://frosthaven.wiki`
-- `www.frosthaven.wiki` must also be bound before its redirect can work.
+- Both apex and `www.frosthaven.wiki` are bound with active SSL.
+- Cloudflare Bulk Redirect list `frosthaven_www_redirect`, enabled by rule `Frosthaven canonical www redirect`, sends `www.frosthaven.wiki` to `https://frosthaven.wiki` with HTTP 301, subpath matching, path suffix and query preservation. It does not include other subdomains. Host matching is not supported in Pages `_redirects`; keep this rule at account level.
 
 Cloudflare's GitHub application must have access to this repository. A project can show a repository name while warning that its Git account is disconnected; that warning is not a successful integration. Complete GitHub reauthentication and add the specific repository, rather than expanding unrelated repository access.
+
+## Launch verification (2026-10-16)
+
+The first release is live on the canonical domain; desktop/mobile navigation, search, map controls, consent withdrawal, sitemap and favicon were checked. The www redirect was independently verified as 301 with path/query preservation. Local DNS still cached a negative answer during QA, so browser verification used the public DNS-resolved Cloudflare address with normal HTTPS certificate verification.
+
+Cloudflare's Git account remains disconnected. Manual deployment of commit `9b0dcdc` succeeded, but merging PR #2 did not trigger a preview or a new production build. Its artwork presentation improvements are in GitHub and await reconnection/deployment. Retrying an existing deployment rebuilds its original commit, not current main. Do not report the automatic release requirement as passed until a fresh PR produces a preview and merging it publishes the exact new commit.
+
+Adsterra approved both banner units and the site; the real snippets are installed behind consent. An outer ad frame was verified, but no filled creative or paid impression was confirmed. `ads.txt` still awaits any provider-issued seller records. Complete digital item/scenario statistics, walkthroughs and map positions also remain partial; see the content coverage report.
 
 ## Configuration
 

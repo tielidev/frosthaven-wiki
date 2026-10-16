@@ -87,6 +87,21 @@ export const site: SiteConfig = {
   ogImageHeight: 1080,
 };
 
+/** Directory verification links; listing approval is tracked separately. */
+export const directoryProfiles: Array<{
+  name: string;
+  href: string;
+  image?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}> = [
+  { name: 'ShowMySites', href: 'https://www.showmysites.com' },
+  { name: 'Uno Directory', href: 'https://uno.directory', image: 'https://uno.directory/uno-directory.svg', alt: 'Listed on Uno Directory', width: 120, height: 30 },
+  { name: 'Lovable App', href: 'https://lovableapp.org', image: 'https://lovableapp.org/lovable-app-badge.svg', alt: 'Lovable App Badge', width: 160 },
+  { name: 'ufind.best', href: 'https://ufind.best/products/frosthaven-wiki', image: 'https://ufind.best/badges/ufind-best-badge-light.svg', alt: 'Featured on ufind.best', width: 150 },
+];
+
 /** Absolute site URL (no trailing slash). Falls back to the Astro `site` config. */
 export const siteUrl: string = (process.env.SITE_URL || `https://${site.domain}`).replace(
   /\/$/,

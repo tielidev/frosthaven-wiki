@@ -4,7 +4,7 @@
  * All text comes from locale JSON (footer.* namespace).
  */
 import { Icon } from 'astro-icon/components';
-import { site } from '~/config/site';
+import { site, directoryProfiles } from '~/config/site';
 import { type Locale } from '~/i18n/routing';
 import { getUi } from '~/i18n/ui';
 import { localizePath, recentPath, tagsPath } from '~/lib/url';
@@ -98,6 +98,23 @@ const legalLinks: Array<keyof typeof footer> = ['about', 'faq', 'privacyPolicy',
         </ul>
       </div>
     </div>
+
+    {directoryProfiles.length > 0 && (
+      <section class="mt-8 border-t border-border pt-6" aria-label={footer.directoryProfiles}>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground">{footer.directoryProfiles}</h2>
+        <ul class="mt-3 flex flex-wrap items-center gap-5">
+          {directoryProfiles.map((profile) => (
+            <li class="max-w-full">
+              <a href={profile.href} target="_blank" rel="noopener noreferrer" class="inline-flex max-w-full items-center text-sm text-foreground/80 underline hover:text-nav">
+                {profile.image ? (
+                  <img src={profile.image} alt={profile.alt ?? profile.name} width={profile.width} height={profile.height} loading="lazy" decoding="async" class="h-auto max-w-full" />
+                ) : profile.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <div class="mt-8 space-y-1 border-t border-border pt-6">
       {/* Copyright line and the fan-site legal notice are SEPARATE lines —

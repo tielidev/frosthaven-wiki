@@ -70,7 +70,7 @@ export const site: SiteConfig = {
   legalNotice: 'An independent fan wiki. Not affiliated with Snapshot Games, Arc Games or Cephalofair Games. Game artwork belongs to its respective owners.',
   // Set a real address if you run no social channels — the contact page
   // renders it as a mailto link.
-  contactEmail: '',
+  contactEmail: 'contact@frosthaven.wiki',
   social: {
     official: 'https://www.playfrosthaven.com/en',
   },

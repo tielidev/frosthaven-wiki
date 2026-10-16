@@ -373,6 +373,9 @@
     "characterArt": "official character artwork",
     "battleArt": "Official Frosthaven digital tactical combat screenshot",
     "settlementArt": "The Frosthaven settlement in winter",
-    "enlargeImage": "Enlarge image"
+    "enlargeImage": "Enlarge image",
+    "copyEmail": "Copy email address",
+    "emailCopied": "Email address copied.",
+    "emailCopyFallback": "Select and copy the email address above."
   }
 }

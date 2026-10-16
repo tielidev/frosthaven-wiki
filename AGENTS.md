@@ -17,6 +17,7 @@ This is the independent English Frosthaven PC digital wiki at `frosthaven.wiki`,
 - Add only substantive, supported details. An identity-only source belongs in the clearly labeled partial index, not a fake complete walkthrough.
 - Content frontmatter is validated in `src/content.config.ts`. Title <=80 characters, description 40–165 characters; body starts at H2, never H1. Internal links end with `/`; add natural related links.
 - Use real official/promotional game images and motion when relevant, record provenance, give accurate alt text and dimensions, lazy-load supporting media and respect reduced motion. Do not replace missing factual material with invented pictures.
+- Each published wiki article needs its own relevant cover, `coverAlt`, `coverCaption` and source record in `src/data/article-covers.json`. Do not reuse a generic cover across different articles. Cards, article heroes and sharing metadata read the same frontmatter image; `pnpm check-data` validates coverage and duplicates. Thematic gameplay scenes must not be described as portraits of a class they do not identify.
 - Game media remains under its owners' rights. The retained MIT license covers software, not the game art. Do not imply official endorsement.
 - Map positions must have visual or other primary evidence. Keep unlocated scenarios in the searchable list; never turn scenario unlock order into geography.
 - Initial content/media scripts are one-time integration helpers; rerunning them may overwrite manual page refinements. Routine work edits MDX and corresponding data directly.

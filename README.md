@@ -26,6 +26,7 @@ The production build is `dist/`, including the Pagefind search index. Search nee
 ## Editing and data
 
 - Articles: `src/content/wiki/en/<category>/<slug>.mdx`. English uses root URLs with trailing slashes.
+- Covers: each article has a distinct `image`, descriptive `coverAlt` and honest `coverCaption`; record its official source in `src/data/article-covers.json`. Optimized originals live in `src/assets/article-covers/`. `pnpm check-data` rejects shared, missing or uncredited covers.
 - Reusable research and evidence: `src/data/research.json`; see `docs/content-coverage.md` for limitations.
 - Map image, markers and provenance: `src/data/maps.json`. Never invent coordinates; unknown locations belong in the searchable list.
 - Site identity/navigation: `src/config/`; user-facing labels: `src/locales/en.json`.

@@ -1,5 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import ArticleCover from '~/components/article/ArticleCover.astro';
+import { parseEntryId } from '~/lib/content';
 import LocaleLayout from '~/components/layout/LocaleLayout.astro';
 import BannerAd from '~/components/ads/BannerAd.astro';
 import LoopMedia from '~/components/media/LoopMedia.astro';
@@ -13,7 +16,13 @@ const strings=getUi(locale),ui=strings.frontier;
 const starters=research.classes.filter(c=>c.starting);
 const guides=research.guides.filter(g=>g.category==='guides').slice(0,4);
 const nav=strings.nav as Record<string,string>;
-const stories=[{href:'/news/frosthaven-1-0-release/',image:6,title:ui.releaseTitle,text:ui.releaseText},{href:'/news/digital-1-0-changes/',image:11,title:ui.changesTitle,text:ui.changesText},{href:'/guides/digital-vs-tabletop/',image:1,title:ui.tabletopTitle,text:ui.tabletopText}];
+const articles=await getCollection('wiki');
+const articleCover=(href:string)=>{
+ const entry=articles.find(e=>{const id=parseEntryId(e.id);return id?.locale===locale&&`/${e.data.category}/${id.slug}/`===href;});
+ if(!entry?.data.image)throw new Error(`Missing homepage article cover: ${href}`);
+ return {image:entry.data.image,alt:entry.data.coverAlt||entry.data.title};
+};
+const stories=[{href:'/news/frosthaven-1-0-release/',title:ui.releaseTitle,text:ui.releaseText},{href:'/news/digital-1-0-changes/',title:ui.changesTitle,text:ui.changesText},{href:'/guides/digital-vs-tabletop/',title:ui.tabletopTitle,text:ui.tabletopText}];
 ---
 <LocaleLayout locale={locale} title={strings.home.meta.title} description={strings.home.meta.description} jsonLd={jsonLd} alternates={alternates}>
  <section class="home-hero">
@@ -34,16 +43,16 @@ const stories=[{href:'/news/frosthaven-1-0-release/',image:6,title:ui.releaseTit
   <BannerAd position="content" />
   <section class="home-section">
    <div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 02</span><h2>{ui.guideTitle}</h2><p>{ui.guideDescription}</p></div><a href="/guides/" class="section-link">{ui.allGuides} ↗</a></div>
-   <div class="feature-grid"><a href="/guides/getting-started/" class="feature-story"><img src="/images/game/scene-04.webp" alt={ui.battleArt} width="1600" height="900" loading="lazy" /><div class="story-copy"><span class="eyebrow">{ui.start}</span><h3>{guides[0]?.title}</h3><p>{guides[0]?.summary}</p></div></a>
-    <div class="guide-stack">{guides.slice(1,4).map((g,i)=><a class="guide-row" href={`/${g.category}/${g.slug}/`}><img src={`/images/game/scene-${String([3,9,14][i]).padStart(2,'0')}-small.webp`} alt={ui.battleArt} width="680" height="383" loading="lazy" /><div><span class="eyebrow">{nav[g.category]}</span><h3>{g.title}</h3><p>{ui.readGuide} ↗</p></div></a>)}</div></div>
+   <div class="feature-grid"><a href="/guides/getting-started/" class="feature-story"><ArticleCover src={articleCover("/guides/getting-started/").image} alt={articleCover("/guides/getting-started/").alt} class="home-article-cover" sizes="(max-width: 767px) 100vw, 60vw" /><div class="story-copy"><span class="eyebrow">{ui.start}</span><h3>{guides[0]?.title}</h3><p>{guides[0]?.summary}</p></div></a>
+    <div class="guide-stack">{guides.slice(1,4).map(g=><a class="guide-row" href={`/${g.category}/${g.slug}/`}><ArticleCover src={articleCover(`/${g.category}/${g.slug}/`).image} alt={articleCover(`/${g.category}/${g.slug}/`).alt} class="home-article-cover" /><div><span class="eyebrow">{nav[g.category]}</span><h3>{g.title}</h3><p>{ui.readGuide} ↗</p></div></a>)}</div></div>
    <LoopMedia index={2} title={ui.guideDescription} />
   </section>
   <section class="map-feature"><img src="/images/game/scene-17.webp" alt={ui.map.mapAlt} width="1600" height="900" loading="lazy" /><div class="map-feature-copy"><span class="eyebrow">{nav.maps}</span><h2>{ui.mapTitle}</h2><p>{ui.mapDescription}</p><a href="/maps/" class="frontier-button"><Icon name="lucide:compass" width="17" />{ui.mapCta} ↗</a></div></section>
   <section class="home-section"><div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 03</span><h2>{ui.outpostTitle}</h2><p>{ui.outpostDescription}</p></div><a href="/outpost/" class="section-link">{ui.outpostCta} ↗</a></div>
-   <div class="feature-grid"><a class="feature-story" href="/outpost/outpost-planning/"><img src="/images/game/scene-15.webp" alt={ui.settlementArt} width="1600" height="900" loading="lazy" /><div class="story-copy"><span class="eyebrow">{nav.outpost}</span><h3>{ui.outpostCta}</h3></div></a><div><LoopMedia index={3} title={ui.outpostTitle} /><LoopMedia index={1} title={ui.classesTitle} /></div></div>
+   <div class="feature-grid"><a class="feature-story" href="/outpost/outpost-planning/"><ArticleCover src={articleCover("/outpost/outpost-planning/").image} alt={articleCover("/outpost/outpost-planning/").alt} class="home-article-cover" /><div class="story-copy"><span class="eyebrow">{nav.outpost}</span><h3>{ui.outpostCta}</h3></div></a><div><LoopMedia index={3} title={ui.outpostTitle} /><LoopMedia index={1} title={ui.classesTitle} /></div></div>
   </section>
   <section class="home-section"><div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 04</span><h2>{ui.latest}</h2><p>{ui.latestDescription}</p></div><a href="/news/" class="section-link">{ui.allNews} ↗</a></div>
-   <div class="news-grid">{stories.map(s=><a href={s.href} class="news-card"><img src={`/images/game/scene-${String(s.image).padStart(2,'0')}-small.webp`} alt={ui.battleArt} width="680" height="383" loading="lazy" /><div><small>{ui.version}</small><h3>{s.title}</h3><p>{s.text}</p></div></a>)}</div>
+   <div class="news-grid">{stories.map(s=><a href={s.href} class="news-card"><ArticleCover src={articleCover(s.href).image} alt={articleCover(s.href).alt} class="home-article-cover" /><div><small>{ui.version}</small><h3>{s.title}</h3><p>{s.text}</p></div></a>)}</div>
   </section>
   <section class="home-section"><div class="section-heading"><div><span class="eyebrow">{ui.eyebrow}</span><h2>{ui.gallery}</h2><p>{ui.galleryDescription}</p></div></div><div class="scenery-grid">{[8,12,14,16,4,17].map(i=><button data-gallery-src={`/images/game/scene-${String(i).padStart(2,'0')}.webp`} aria-label={ui.gallery}><img src={`/images/game/scene-${String(i).padStart(2,'0')}-small.webp`} alt={`${ui.gallery} — ${i}`} width="680" height="383" loading="lazy" /></button>)}</div></section>
  </div>

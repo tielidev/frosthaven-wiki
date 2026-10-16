@@ -36,6 +36,8 @@ const wiki = defineCollection({
       date: z.coerce.date(),
       lastModified: z.coerce.date().optional(),
       image: image().optional(),
+       coverAlt: z.string().max(200).optional(),
+       coverCaption: z.string().max(240).optional(),
       portrait: z.string().startsWith('/images/').optional(),
       role: z.string().optional(),
       availability: z.enum(['starting', 'unlockable']).optional(),

@@ -5,6 +5,7 @@ import AdSenseSlot from './AdSenseSlot.astro';
 interface Props { position: 'content' | 'sidebar' }
 const { position }=Astro.props;
 const label=getUi('en').shared.adLabel;
+const unavailable=getUi('en').frontier.adUnavailable;
 const units=position==='sidebar' ? [{key:adSlots.rectangle,name:'sidebar-300x250',w:300,h:250,css:'ad-sidebar'}] : [
  {key:adSlots.leaderboard,name:'incontent-728x90',w:728,h:90,css:'ad-desktop'},
  {key:adSlots.rectangle,name:'sidebar-300x250',w:300,h:250,css:'ad-mobile'},
@@ -14,11 +15,26 @@ const units=position==='sidebar' ? [{key:adSlots.rectangle,name:'sidebar-300x250
 {adsEnabled && adProvider==='adsterra' && units.filter(u=>u.key).map(unit=>(
  <aside class={`banner-unit ${unit.css}`} aria-label={label} data-pagefind-ignore>
   <span>{label}</span>
-  <iframe data-ad-src={`/ads/${unit.name}.html`} width={unit.w} height={unit.h} title={label} loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <div class="banner-stage" style={`width:${unit.w}px;height:${unit.h}px`} data-ad-state="idle">
+    {/* Same-origin scripts need storage access. This sandbox contains layout;
+        it is not a security boundary against a malicious same-origin script. */}
+    <iframe data-ad-src={`/ads/${unit.name}`} data-ad-unit={unit.name} width={unit.w} height={unit.h} title={label} loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <p class="banner-status" role="status" aria-live="polite">{unavailable}</p>
+  </div>
  </aside>
 ))}
 <script>
-const activate=()=>{let accepted=document.documentElement.dataset.adConsent==="accepted";try{accepted=accepted||localStorage.getItem('aw-cookie-consent')==='accepted';}catch{}if(!accepted)return;document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(frame=>{if(getComputedStyle(frame.parentElement!).display==='none')return;if(!frame.src)frame.src=frame.dataset.adSrc!;});};
+const activate=()=>{let accepted=document.documentElement.dataset.adConsent==="accepted";try{accepted=accepted||localStorage.getItem('aw-cookie-consent')==='accepted';}catch{}if(!accepted)return;document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(frame=>{const stage=frame.closest<HTMLElement>('.banner-stage')!;const unit=frame.closest<HTMLElement>('.banner-unit')!;if(getComputedStyle(unit).display==='none'){frame.removeAttribute('src');stage.dataset.adState='idle';return;}if(!frame.hasAttribute('src')){stage.dataset.adState='loading';frame.src=frame.dataset.adSrc!;}});};
+window.addEventListener('message',event=>{
+ if(event.origin!==location.origin||!event.data||event.data.channel!=='frosthaven-ad-status')return;
+ if(!['frame-loaded','unavailable','error'].includes(event.data.state))return;
+ document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src][src]').forEach(frame=>{
+  if(event.source!==frame.contentWindow||event.data.unit!==frame.dataset.adUnit)return;
+  const stage=frame.closest<HTMLElement>('.banner-stage')!;
+  stage.dataset.adState=event.data.state==='frame-loaded'?'frame-loaded':'unavailable';
+  stage.dataset.adReason=typeof event.data.reason==='string'?event.data.reason:'';
+ });
+});
 activate();
 document.addEventListener('aw:consent-accepted',activate);
 window.addEventListener('resize',activate);

@@ -19,10 +19,12 @@
 ## Checklist
 
 - [ ] `pnpm typecheck` passes (0 errors)
-- [ ] `pnpm lint` passes
+- [ ] Site tests, content/data/config checks pass
 - [ ] `pnpm build` succeeds
 - [ ] I tested the change locally with `pnpm dev`
 - [ ] Docs updated if user-facing change (README / docs/*)
+- [ ] Digital facts have sources and no invented statistics or map coordinates
+- [ ] Preview has real ads disabled; production checked on desktop and phone after release
 
 ## Notes for reviewer
 

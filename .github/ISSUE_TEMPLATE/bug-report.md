@@ -21,8 +21,9 @@ labels: bug
 
 ## Environment
 
-- AnvilWiki version / commit: <!-- e.g. v0.1.0 or commit hash -->
-- Node version: <!-- run `node -v` -->
+- Affected wiki URL:
+- Frosthaven digital game version:
+- Evidence or current in-game tooltip (for guide corrections):
 - Browser (if rendering issue):
 
 ## Additional context

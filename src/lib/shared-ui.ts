@@ -44,5 +44,5 @@ export function currentSharedStrings(currentLocale: string | undefined): SharedS
  * - CONSENT_ACCEPTED_EVENT: document-level CustomEvent dispatched whenever
  *   consent becomes known-accepted (returning visitor or banner accept).
  */
-export const CONSENT_STORAGE_KEY = 'aw-cookie-consent';
+export const CONSENT_STORAGE_KEY = 'aw-cookie-consent-v2';
 export const CONSENT_ACCEPTED_EVENT = 'aw:consent-accepted';

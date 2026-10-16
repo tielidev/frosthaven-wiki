@@ -98,7 +98,7 @@ const adLabel = sharedStrings.adLabel ?? 'Advertisement';
              Event + storage key mirror src/lib/shared-ui.ts (inline scripts
              can't import; tests/consent.test.ts pins the duplicates). */
           (function () {
-            var CONSENT_KEY = 'aw-cookie-consent';
+            var CONSENT_KEY = 'aw-cookie-consent-v2';
             var CONSENT_EVENT = 'aw:consent-accepted';
             var activate = function () {
               var pending = document.querySelectorAll('iframe[data-adsterra-defer]');

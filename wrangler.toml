@@ -4,6 +4,7 @@ pages_build_output_dir = "dist"
 
 [vars]
 SITE_URL = "https://frosthaven.wiki"
+PUBLIC_GA_ID = "G-MLBDWVKPQ2"
 PUBLIC_AD_PROVIDER = "adsterra"
 PUBLIC_ADSTERRA_SLOT_INCONTENT_728X90 = "eca493b27fc6f421c1089ef57eafa12e"
 PUBLIC_ADSTERRA_SLOT_SIDEBAR_300X250 = "599a2422f1f76b9f02a62d2c90a1b892"

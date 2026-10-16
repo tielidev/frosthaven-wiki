@@ -6,13 +6,33 @@ const {labels,privacyHref,privacyLabel}=Astro.props;
  <div class="mx-auto flex max-w-7xl flex-col items-center gap-3 sm:flex-row"><p class="text-sm text-muted-foreground"><strong>{labels.title}: </strong>{labels.text}<a href={privacyHref} class="underline">{privacyLabel}</a></p><div class="flex shrink-0 gap-3"><button type="button" data-consent-decline class="btn-outline">{labels.decline}</button><button type="button" data-consent-accept class="btn-primary">{labels.accept}</button></div></div>
 </div>
 <script>
-const KEY='aw-cookie-consent';
+const KEY='aw-cookie-consent-v2';
 const ACCEPTED_EVENT='aw:consent-accepted';
 const banner=document.getElementById('cookie-consent');
 let saved:string|null=null;try{saved=localStorage.getItem(KEY);}catch{}
-const apply=(value:string)=>{document.documentElement.dataset.adConsent=value;if(banner)banner.hidden=true;if(value==='accepted'){window.__awLoadTrackers?.();document.dispatchEvent(new CustomEvent(ACCEPTED_EVENT));}else{document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(f=>f.removeAttribute('src'));document.dispatchEvent(new CustomEvent('aw:consent-declined'));}};
+const clearAnalyticsCookies=()=>{
+ const names=document.cookie.split(';').map(c=>c.trim().split('=')[0]).filter(n=>/^_ga(?:_|$)|^_gid$/.test(n));
+ const hosts=location.hostname.split('.');
+ const domains=['',...hosts.map((_,i)=>hosts.slice(i).join('.')).filter(d=>d.includes('.'))];
+ for(const name of names)for(const domain of domains){
+  document.cookie=`${name}=; Max-Age=0; Path=/; SameSite=Lax${domain?`; Domain=${domain}`:''}`;
+ }
+};
+const apply=(value:string)=>{
+ const wasAccepted=document.documentElement.dataset.adConsent==='accepted';
+ document.documentElement.dataset.adConsent=value;
+ if(banner)banner.hidden=true;
+ if(value==='accepted'){
+  window.__awLoadTrackers?.();document.dispatchEvent(new CustomEvent(ACCEPTED_EVENT));
+ }else{
+  window.__awStopTrackers?.();clearAnalyticsCookies();
+  document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src],iframe[data-adsterra-defer]').forEach(f=>f.removeAttribute('src'));
+  document.dispatchEvent(new CustomEvent('aw:consent-declined'));
+ }
+ return wasAccepted&&value!=='accepted';
+};
 if(saved==='accepted'||saved==='declined')apply(saved);else if(banner)banner.hidden=false;
-for(const choice of ['accept','decline'])banner?.querySelector(`[data-consent-${choice}]`)?.addEventListener('click',()=>{const value=choice==='accept'?'accepted':'declined';try{localStorage.setItem(KEY,value);}catch{}apply(value);});
+for(const choice of ['accept','decline'])banner?.querySelector(`[data-consent-${choice}]`)?.addEventListener('click',()=>{const value=choice==='accept'?'accepted':'declined';try{localStorage.setItem(KEY,value);}catch{}if(apply(value))location.reload();});
 document.addEventListener('aw:consent-reset',()=>{try{localStorage.setItem(KEY,'declined');}catch{}apply('declined');location.reload();});
 document.addEventListener('aw:consent-open',()=>{if(banner)banner.hidden=false;});
 </script>

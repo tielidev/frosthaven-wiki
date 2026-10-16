@@ -43,10 +43,10 @@
     "share": "Share",
     "copyLink": "Copy link",
     "copied": "Copied!",
-    "consentText": "Optional ads may use cookies and similar technologies. Accept to load advertising, or decline to keep optional advertising off. ",
+    "consentText": "Optional advertising and Google Analytics use cookies and similar technologies. Accept to enable both, or decline to keep both off. ",
     "accept": "Accept",
     "decline": "Decline",
-    "consentTitle": "Cookies",
+    "consentTitle": "Advertising and analytics",
     "bossCard": {
       "title": "Boss Overview",
       "hp": "HP",
@@ -263,7 +263,7 @@
         },
         {
           "question": "Do I need to accept ads to read the guides?",
-          "answer": "No. Declining optional advertising leaves the guides available. You can change your choice on the Cookie preferences page."
+          "answer": "No. Declining optional advertising and analytics leaves the guides available. You can change your choice on the Cookie preferences page."
         }
       ]
     }
@@ -331,7 +331,7 @@
     "play": "Play animation",
     "cookies": "Cookie preferences",
     "consentWithdraw": "Withdraw consent",
-    "consentStatus": "Optional advertising is off until you accept. You can change your choice here at any time.",
+    "consentStatus": "Optional advertising and Google Analytics remain off until you accept. You can change or withdraw your choice here at any time.",
     "aboutLabel": "Editorial policy & credits",
     "contactLabel": "Report an error",
     "map": {

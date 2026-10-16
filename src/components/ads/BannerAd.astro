@@ -24,7 +24,7 @@ const units=position==='sidebar' ? [{key:adSlots.rectangle,name:'sidebar-300x250
  </aside>
 ))}
 <script>
-const activate=()=>{let accepted=document.documentElement.dataset.adConsent==="accepted";try{accepted=accepted||localStorage.getItem('aw-cookie-consent')==='accepted';}catch{}if(!accepted)return;document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(frame=>{const stage=frame.closest<HTMLElement>('.banner-stage')!;const unit=frame.closest<HTMLElement>('.banner-unit')!;if(getComputedStyle(unit).display==='none'){frame.removeAttribute('src');stage.dataset.adState='idle';return;}if(!frame.hasAttribute('src')){stage.dataset.adState='loading';frame.src=frame.dataset.adSrc!;}});};
+const activate=()=>{let accepted=document.documentElement.dataset.adConsent==="accepted";try{accepted=accepted||localStorage.getItem('aw-cookie-consent-v2')==='accepted';}catch{}if(!accepted)return;document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(frame=>{const stage=frame.closest<HTMLElement>('.banner-stage')!;const unit=frame.closest<HTMLElement>('.banner-unit')!;if(getComputedStyle(unit).display==='none'){frame.removeAttribute('src');stage.dataset.adState='idle';return;}if(!frame.hasAttribute('src')){stage.dataset.adState='loading';frame.src=frame.dataset.adSrc!;}});};
 window.addEventListener('message',event=>{
  if(event.origin!==location.origin||!event.data||event.data.channel!=='frosthaven-ad-status')return;
  if(!['frame-loaded','unavailable','error'].includes(event.data.state))return;

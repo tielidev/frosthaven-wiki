@@ -28,6 +28,14 @@ Adsterra approved both banner units and the site; the real snippets are installe
 
 Advertising defaults to Adsterra. `PUBLIC_AD_PROVIDER="none"` stops site ad mounts on the next deployment. Missing unit keys also disable those units. Changing to AdSense requires a real approved client and slot IDs, updated privacy disclosure and the applicable Google consent requirements; it is not an automatic approval path.
 
+### Analytics and consent
+
+`PUBLIC_GA_ID="G-MLBDWVKPQ2"` selects the independent **Frosthaven Wiki** GA4 property `559248880` in account `326743915`. Keep this public measurement ID in `wrangler.toml`; no GTM container or second analytics loader is needed. A non-main build removes the ID before rendering.
+
+Advertising and analytics share explicit consent stored under `aw-cookie-consent-v2`. Earlier advertising-only choices are intentionally ignored. Until acceptance, the site does not request Google Analytics or advertising scripts. The loader runs once per document; normal navigation records the next page through GA4's standard page-view configuration. Withdrawal sets Google's measurement-disable flag, clears controllable first-party `_ga*` / `_gid` cookies and reloads with the declined choice. Cookie preferences remain accessible at `/cookies/`.
+
+The Google tag grants analytics storage only after acceptance and always denies Google advertising storage, user data and personalization permissions. Property settings should retain Singapore reporting time, USD currency, 14-month event retention, Google Signals/personalized advertising off, and enhanced measurement for scrolling, outbound clicks, downloads and supported videos only (automatic site-search/form collection off). The local consent check should stub external scripts; production verification requires a real collect request with this ID and a matching Realtime visit.
+
 `ads.txt` remains comments-only unless the ad provider supplies applicable authorized seller records. Never invent publisher IDs or copy another site's seller entries.
 
 ## Pull request and release

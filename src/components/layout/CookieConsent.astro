@@ -1,0 +1,18 @@
+---
+interface Props { labels:{title:string;text:string;accept:string;decline:string}; privacyHref?:string; privacyLabel?:string }
+const {labels,privacyHref,privacyLabel}=Astro.props;
+---
+<div id="cookie-consent" hidden class="fixed inset-x-0 bottom-0 z-[60] border-t border-border bg-card p-4 shadow-lg" role="dialog" aria-label={labels.title}>
+ <div class="mx-auto flex max-w-7xl flex-col items-center gap-3 sm:flex-row"><p class="text-sm text-muted-foreground"><strong>{labels.title}: </strong>{labels.text}<a href={privacyHref} class="underline">{privacyLabel}</a></p><div class="flex shrink-0 gap-3"><button type="button" data-consent-decline class="btn-outline">{labels.decline}</button><button type="button" data-consent-accept class="btn-primary">{labels.accept}</button></div></div>
+</div>
+<script>
+const KEY='aw-cookie-consent';
+const ACCEPTED_EVENT='aw:consent-accepted';
+const banner=document.getElementById('cookie-consent');
+let saved:string|null=null;try{saved=localStorage.getItem(KEY);}catch{}
+const apply=(value:string)=>{document.documentElement.dataset.adConsent=value;if(banner)banner.hidden=true;if(value==='accepted'){window.__awLoadTrackers?.();document.dispatchEvent(new CustomEvent(ACCEPTED_EVENT));}else{document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(f=>f.removeAttribute('src'));document.dispatchEvent(new CustomEvent('aw:consent-declined'));}};
+if(saved==='accepted'||saved==='declined')apply(saved);else if(banner)banner.hidden=false;
+for(const choice of ['accept','decline'])banner?.querySelector(`[data-consent-${choice}]`)?.addEventListener('click',()=>{const value=choice==='accept'?'accepted':'declined';try{localStorage.setItem(KEY,value);}catch{}apply(value);});
+document.addEventListener('aw:consent-reset',()=>{try{localStorage.setItem(KEY,'declined');}catch{}apply('declined');location.reload();});
+document.addEventListener('aw:consent-open',()=>{if(banner)banner.hidden=false;});
+</script>

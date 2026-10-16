@@ -1,0 +1,290 @@
+[
+  {
+    "category": "enemies",
+    "name": "Abael Herder",
+    "path": "/images/entities/abael-herder.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/df6a8dc040b5b95890ec3a2b50e0a6029e62ae57.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1814942955080626"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Abael Scout",
+    "path": "/images/entities/abael-scout.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/f3d4e345a3dbc61761ada01c2d8bba7b08a6d76e.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1814942955080626"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Algox Archer",
+    "path": "/images/entities/algox-archer.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/b6a5204b0ab3ccb6548bc8edd1684052d934ed45.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1796631172376670"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Algox Guard",
+    "path": "/images/entities/algox-guard.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/50be8dafed117ac40193ae5b70b437701bfc0d63.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1796631172376670"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Algox Icespeaker",
+    "path": "/images/entities/algox-icespeaker.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/e03cb6e7287a49047c81958e127f789aeef8eab7.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1796631172376670"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Algox Priest",
+    "path": "/images/entities/algox-priest.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/09340b4f5fd6c2d83ed7b61ea3362fbbd44a818b.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1796631172376670"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Algox Scout",
+    "path": "/images/entities/algox-scout.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/2512d40a5bc8a639ffa23ffd42e437120764a7da.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1796631172376670"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Algox Snowspeaker",
+    "path": "/images/entities/algox-snowspeaker.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/04c95eeade9be17e677536fe18cea5c7dfd6c989.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1796631172376670"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Black Imp",
+    "path": "/images/entities/black-imp.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/49056faaac2ab818b5c0cbe0bfc78cb4fe43aacb.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1826362059930392"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Forest Imp",
+    "path": "/images/entities/forest-imp.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/83c8a099c2e7d7d817f2c3abe63aacc6e25c754a.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1826362059930392"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Snow Imp",
+    "path": "/images/entities/snow-imp.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/d4ac7c36947c9bc79da8ed7ab6fce7486e7f0aa2.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1826362059930392"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Lurker Clawcrusher",
+    "path": "/images/entities/lurker-clawcrusher.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/351ee2fd64785ee248fb1f8e243cd6f9ea45e603.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1808061939469663"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Lurker Mindsnipper",
+    "path": "/images/entities/lurker-mindsnipper.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/0da46da3065eecda3a43d90e74626846764595e9.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1808061939469663"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Lurker Soldier",
+    "path": "/images/entities/lurker-soldier.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/c868279dac2e70af8863a769a1161092f0f2e4d5.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1808061939469663"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Lurker Wavethrower",
+    "path": "/images/entities/lurker-wavethrower.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/54006c4bd6234ffd284b9215013a62a811a9792a.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1808061939469663"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Savvas Icestorm",
+    "path": "/images/entities/savvas-icestorm.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/91fea26ffcbf5f64ef2d3827d8e54062d15b421b.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1816849002020440"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Savvas Lavaflow",
+    "path": "/images/entities/savvas-lavaflow.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/b3e7bc8314d28e5e878e91e8bf0cc54cc843a8be.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1816849002020440"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Ancient Artillery",
+    "path": "/images/entities/ancient-artillery.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/b11b61b556d1aa3f437c196a22466a9139f75233.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1800357164537253"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Flaming Bladespinner",
+    "path": "/images/entities/flaming-bladespinner.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/3531532230249dee51850cac0283f8f04164fc2c.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1800357164537253"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Robotic Boltshooter",
+    "path": "/images/entities/robotic-boltshooter.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/84cee9adcdeda83b6e8f6c2e333a2bbfc0096804.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1800357164537253"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Ruined Machine",
+    "path": "/images/entities/ruined-machine.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/6e6e8cefc1b054cacc5fa528b48aabc0355889a3.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1800357164537253"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Steel Automaton",
+    "path": "/images/entities/steel-automaton.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/e3dc2290710a9391246c349344dba7680cf4d5f3.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1800357164537253"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Vermling Priest",
+    "path": "/images/entities/vermling-priest.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/ae28de021aca2604fa0dd8ed2169c395e7a1a2b0.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1815580768393415"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  },
+  {
+    "category": "enemies",
+    "name": "Vermling Scout",
+    "path": "/images/entities/vermling-scout.webp",
+    "url": "https://clan.fastly.steamstatic.com/images/45549127/d2da0ed43be59a1166aacf2e4810fe79d6f467c5.jpg",
+    "width": 4000,
+    "height": 3400,
+    "sourceIds": [
+      "steam-1815580768393415"
+    ],
+    "rights": "Official digital game promotional media; copyright remains with its owners."
+  }
+]

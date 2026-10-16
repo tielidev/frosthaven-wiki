@@ -1,0 +1,21 @@
+{
+  "name": "Frosthaven Wiki",
+  "short_name": "Frosthaven Wiki",
+  "description": "Explore Frosthaven digital with class builds, scenario guides, maps, equipment and outpost strategy, with sources and version notes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b101b",
+  "theme_color": "#82c8df",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

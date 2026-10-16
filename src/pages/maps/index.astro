@@ -1,0 +1,25 @@
+---
+import LocaleLayout from '~/components/layout/LocaleLayout.astro';
+import FrontierMap from '~/components/maps/FrontierMap.astro';
+import ui from '~/locales/en.json';
+import { siteUrl } from '~/config/site';
+import BannerAd from '~/components/ads/BannerAd.astro';
+const copy = ui.frontier.map;
+---
+<LocaleLayout locale="en" title={copy.title} description={copy.description} image={`${siteUrl}/images/game/scene-17.webp`} ogImageWidth={1600} ogImageHeight={900}>
+  <div data-pagefind-body>
+    <header class="map-heading">
+      <p>{copy.eyebrow}</p>
+      <h1>{copy.title}</h1>
+      <div>{copy.intro}</div>
+    </header>
+    <FrontierMap />
+  </div>
+  <BannerAd position="content" />
+</LocaleLayout>
+<style>
+  .map-heading { margin: 1rem 0 2rem; max-width: 52rem; }
+  .map-heading p { color: hsl(var(--brand)); font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+  .map-heading h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-family: Georgia, serif; line-height: 1.1; margin: .7rem 0 1rem; }
+  .map-heading div { color: hsl(var(--muted-foreground)); line-height: 1.7; }
+</style>

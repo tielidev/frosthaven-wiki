@@ -1,0 +1,80 @@
+[
+  {
+    "name": "logo.webp",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/logos/header_logo.webp",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "hero.webp",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/introduction/bg2.png",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "about.webp",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/about/about.webp",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "geminate.webp",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Geminate.webp",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "favicon-original.ico",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/favicon.ico",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-1.webm",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/6c6c20107e3d8278041ffecc3a092c36.webm?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-1.webp",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/6c6c20107e3d8278041ffecc3a092c36.poster.avif?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-2.webm",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/40757dfad70fce4148f3319b8135f1c8.webm?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-2.webp",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/40757dfad70fce4148f3319b8135f1c8.poster.avif?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-3.webm",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/e66691f3174a6ca846e1b9874b341a2e.webm?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-3.webp",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/e66691f3174a6ca846e1b9874b341a2e.poster.avif?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-4.webm",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/37e0555d8a80f6902b57719f1b3f241d.webm?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  },
+  {
+    "name": "loop-4.webp",
+    "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2347080/extras/37e0555d8a80f6902b57719f1b3f241d.poster.avif?t=1792089974",
+    "source": "https://www.playfrosthaven.com/en",
+    "rights": "Official promotional material; rights reserved by game owners."
+  }
+]

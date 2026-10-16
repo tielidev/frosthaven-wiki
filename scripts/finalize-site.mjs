@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+const edit=async(p,fn)=>fs.writeFile(p,fn(await fs.readFile(p,'utf8')));
+const p='src/locales/en.json';const ui=JSON.parse(await fs.readFile(p,'utf8'));
+Object.assign(ui.frontier,{releaseTitle:'Frosthaven 1.0 is here',releaseText:'The full campaign, all seventeen heroes, and the next chapter for the frozen frontier.',changesTitle:'What changed in 1.0?',changesText:'Codex, hero retraining, scenario rules and the updates that affect your next expedition.',tabletopTitle:'From tabletop to desktop',tabletopText:'Understand which references transfer, and where the digital edition needs its own field notes.',characterArt:'official character artwork',battleArt:'Official Frosthaven digital tactical combat screenshot',settlementArt:'The Frosthaven settlement in winter'});
+ui.shared.codesFaq=[{question:'',answer:''}];
+ui.shared.feedbackThanks='Thank you. You can report a correction through the contact page.';
+await fs.writeFile(p,JSON.stringify(ui,null,2)+'\n');
+await edit('src/components/layout/BaseLayout.astro',s=>s.replace("const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;",'').replace('const gaId = import.meta.env.PUBLIC_GA_ID as string | undefined;','const gaId = process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== "main" ? undefined : import.meta.env.PUBLIC_GA_ID as string | undefined;').replace('const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;','const adsenseClient = adsEnabled && import.meta.env.PUBLIC_AD_PROVIDER === "adsense" ? import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined : undefined;'));
+await edit('src/components/layout/BaseLayout.astro',s=>s.replace('if (stored === \'dark\' || stored === \'black\' || !stored)',"if (stored === 'dark' || stored === 'black' || !stored)"));
+const pkg=JSON.parse(await fs.readFile('package.json','utf8'));pkg.name='frosthaven-wiki';pkg.description=ui.site.description;pkg.homepage='https://frosthaven.wiki';pkg.repository.url='https://github.com/tielidev/frosthaven-wiki.git';pkg.bugs.url='https://github.com/tielidev/frosthaven-wiki/issues';pkg.scripts['check-data']='node scripts/check-frontier-data.mjs';pkg.scripts['test:site']='vitest run tests/maps.test.ts tests/frontier.test.ts';await fs.writeFile('package.json',JSON.stringify(pkg,null,2)+'\n');
+await fs.writeFile('public/_redirects','https://www.frosthaven.wiki/* https://frosthaven.wiki/:splat 301\n');
+await edit('public/_headers',s=>s+'\n/ads/*\n  X-Robots-Tag: noindex, nofollow\n');
+await fs.writeFile('public/manifest.json',JSON.stringify({name:'Frosthaven Wiki',short_name:'Frosthaven Wiki',description:ui.site.description,start_url:'/',display:'standalone',background_color:'#0b101b',theme_color:'#82c8df',icons:[{src:'/android-chrome-192x192.png',sizes:'192x192',type:'image/png'},{src:'/android-chrome-512x512.png',sizes:'512x512',type:'image/png'}]},null,2));
+await fs.writeFile('public/favicon.svg','<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><image href="/favicon-96x96.png" width="96" height="96"/></svg>');
+console.log('Site identity, metadata and locale complete');

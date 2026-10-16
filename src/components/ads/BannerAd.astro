@@ -1,0 +1,25 @@
+---
+import { adsEnabled, adProvider, adSlots } from '~/config/advertising';
+import { getUi } from '~/i18n/ui';
+import AdSenseSlot from './AdSenseSlot.astro';
+interface Props { position: 'content' | 'sidebar' }
+const { position }=Astro.props;
+const label=getUi('en').shared.adLabel;
+const units=position==='sidebar' ? [{key:adSlots.rectangle,name:'sidebar-300x250',w:300,h:250,css:'ad-sidebar'}] : [
+ {key:adSlots.leaderboard,name:'incontent-728x90',w:728,h:90,css:'ad-desktop'},
+ {key:adSlots.rectangle,name:'sidebar-300x250',w:300,h:250,css:'ad-mobile'},
+];
+---
+{adsEnabled && adProvider==='adsense' && <AdSenseSlot position={position==='content'?'incontent':'sidebar'} />}
+{adsEnabled && adProvider==='adsterra' && units.filter(u=>u.key).map(unit=>(
+ <aside class={`banner-unit ${unit.css}`} aria-label={label} data-pagefind-ignore>
+  <span>{label}</span>
+  <iframe data-ad-src={`/ads/${unit.name}.html`} width={unit.w} height={unit.h} title={label} loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+ </aside>
+))}
+<script>
+const activate=()=>{let accepted=document.documentElement.dataset.adConsent==="accepted";try{accepted=accepted||localStorage.getItem('aw-cookie-consent')==='accepted';}catch{}if(!accepted)return;document.querySelectorAll<HTMLIFrameElement>('iframe[data-ad-src]').forEach(frame=>{if(getComputedStyle(frame.parentElement!).display==='none')return;if(!frame.src)frame.src=frame.dataset.adSrc!;});};
+activate();
+document.addEventListener('aw:consent-accepted',activate);
+window.addEventListener('resize',activate);
+</script>

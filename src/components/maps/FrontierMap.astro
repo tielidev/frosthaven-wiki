@@ -1,0 +1,131 @@
+---
+import research from '~/data/research.json';
+import { frontierMap, validateMarkers } from '~/lib/maps';
+import ui from '~/locales/en.json';
+const copy = ui.frontier.map;
+const issues = validateMarkers(frontierMap.markers);
+if (issues.length) throw new Error(issues.join('\n'));
+const scenarios = research.scenarios.map(entry => ({ title: `${entry.number}. ${entry.name}`, href: `/scenarios/scenario-index/#scenario-${entry.number}` }));
+---
+<section class="atlas" data-atlas>
+  <div class="atlas-tools">
+    <label class="atlas-search"><span>{copy.search}</span><input type="search" data-map-search placeholder={copy.search} autocomplete="off" /></label>
+    <label><span>{copy.region}</span><select data-map-region><option value="">{copy.allRegions}</option><option value="frosthaven">{copy.frosthavenRegion}</option></select></label>
+    <label><span>{copy.type}</span><select data-map-type><option value="">{copy.allTypes}</option><option value="settlement">{copy.settlement}</option><option value="scenario">{ui.nav.scenarios}</option></select></label>
+  </div>
+  <div class="atlas-tabs" data-map-tabs hidden>
+    <button type="button" data-map-view="map" aria-pressed="true">{copy.mapView}</button>
+    <button type="button" data-map-view="list" aria-pressed="false">{copy.listView}</button>
+  </div>
+  <div class="atlas-layout">
+    <div class="atlas-map-panel">
+      <div class="atlas-viewport" data-map-viewport tabindex="0" role="region" aria-label={copy.mapView} aria-describedby="atlas-instructions">
+        <div class="atlas-artwork" data-map-artwork>
+          <img src={frontierMap.background} alt={copy.mapAlt} width={frontierMap.width} height={frontierMap.height} draggable="false" fetchpriority="high" />
+          {frontierMap.markers.map(marker => <a class="atlas-marker" href={marker.href} data-map-marker={marker.id} data-x={marker.x} data-y={marker.y} style={`left:${marker.x}%;top:${marker.y}%`} aria-label={marker.title}><span class="atlas-marker-dot"></span><span class="atlas-marker-label">{marker.title}</span></a>)}
+        </div>
+        <div class="atlas-compass" aria-hidden="true"><span>N</span><span>↑</span></div>
+        <div class="atlas-controls" hidden data-map-controls>
+          <button type="button" data-map-action="in" aria-label={copy.zoomIn}>+</button>
+          <button type="button" data-map-action="out" aria-label={copy.zoomOut}>−</button>
+          <button type="button" data-map-action="reset" aria-label={copy.reset}>↺</button>
+          <output data-map-zoom>100%</output>
+        </div>
+      </div>
+      <p id="atlas-instructions" class="atlas-hint">{copy.instructions}</p>
+      {frontierMap.markers.map(marker => <div class="atlas-popup" data-map-popup={marker.id} hidden>
+        <div><p class="atlas-kicker">{copy.settlement}</p><h2>{marker.title}</h2></div>
+        <button type="button" data-map-close aria-label={copy.close}>×</button>
+        <p>{marker.notes}</p>
+        <a class="atlas-guide" href={marker.href}>{copy.openGuide} <span aria-hidden="true">↗</span></a>
+      </div>)}
+    </div>
+    <aside class="atlas-locations" aria-label={copy.locations}>
+      <div class="atlas-list-heading"><h2>{copy.locations}</h2><span data-map-count aria-live="polite">{frontierMap.markers.length + scenarios.length}</span></div>
+      <ul>
+        {frontierMap.markers.map(marker => <li data-map-entry data-id={marker.id} data-title={marker.title} data-region={marker.region} data-type={marker.type}>
+          <a href={`?location=${marker.id}`} data-map-locate={marker.id}><span class="atlas-location-icon" aria-hidden="true">⌖</span><span><strong>{marker.title}</strong><small>{copy.settlement} · {copy.frosthavenRegion}</small></span><span aria-hidden="true">↗</span></a>
+          <a class="atlas-detail" href={marker.href}>{copy.openGuide}</a>
+        </li>)}
+        {scenarios.map(scenario => <li data-map-entry data-title={scenario.title} data-region="" data-type="scenario">
+          <a href={scenario.href}><span class="atlas-location-icon" aria-hidden="true">◇</span><span><strong>{scenario.title}</strong><small>{copy.unlocated}</small></span><span aria-hidden="true">↗</span></a>
+        </li>)}
+      </ul>
+      <p class="atlas-empty" data-map-empty hidden>{copy.noResults}</p>
+    </aside>
+  </div>
+  <footer class="atlas-provenance">
+    <div><h2>{copy.coverageTitle}</h2><p>{copy.coverageBody}</p></div>
+    <p><a href={frontierMap.source} target="_blank" rel="noopener noreferrer">{copy.source} ↗</a><br /><span>{copy.verified} <time datetime={frontierMap.verified}>{frontierMap.verified}</time></span></p>
+  </footer>
+</section>
+<script>
+  import { initializeMaps } from '~/scripts/map';
+  initializeMaps();
+</script>
+<style>
+  .atlas { --line: hsl(var(--border)); --accent: hsl(var(--brand-light)); color: hsl(var(--foreground)); }
+  .atlas [hidden] { display: none !important; }
+  .atlas-tools { display: flex; gap: 1rem; margin-bottom: 1.25rem; align-items: end; }
+  .atlas-tools label { display: grid; gap: .45rem; flex: 1; min-width: 0; }
+  .atlas-tools .atlas-search { flex: 2; }
+  .atlas-tools label>span { color: hsl(var(--muted-foreground)); font-size: .75rem; }
+  .atlas input, .atlas select { width: 100%; min-width: 0; background: hsl(var(--card)); border: 1px solid var(--line); border-radius: 5px; color: hsl(var(--foreground)); padding: .8rem; font-size: .85rem; }
+  .atlas button { cursor: pointer; }
+  .atlas :is(button,a,input,select):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .atlas-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1rem; align-items: start; }
+  .atlas-map-panel { min-width: 0; }
+  .atlas-viewport { overflow: hidden; position: relative; aspect-ratio: 16/9; background: hsl(var(--background)); border: 1px solid hsl(var(--brand) / .4); border-radius: 6px; }
+  .atlas.is-enhanced .atlas-viewport { touch-action: none; cursor: grab; }
+  .atlas-viewport.is-dragging { cursor: grabbing; }
+  .atlas-artwork { position: absolute; inset: 0; transform-origin: center; will-change: transform; }
+  .atlas-artwork>img { width: 100%; height: 100%; display: block; user-select: none; }
+  .atlas-marker { position: absolute; display: flex; align-items: center; flex-direction: column; transform: translate(-50%,-50%) scale(var(--marker-scale,1)); text-decoration: none; color: hsl(var(--brand-light)); z-index: 2; min-width: 44px; min-height: 44px; justify-content: center; }
+  .atlas-marker-dot { width: 18px; height: 18px; border: 3px solid hsl(var(--brand-light)); background: hsl(var(--brand-text)); border-radius: 50%; box-shadow: 0 0 0 6px hsl(var(--background) / .4), 0 2px 10px hsl(var(--background)); }
+  .atlas-marker-label { margin-top: 8px; background: hsl(var(--background) / .92); border: 1px solid hsl(var(--brand)); padding: 3px 8px; border-radius: 3px; font-size: 12px; white-space: nowrap; }
+  .atlas-marker.is-selected .atlas-marker-dot { background: hsl(var(--brand-light)); box-shadow: 0 0 0 9px hsl(var(--brand) / .2), 0 0 16px hsl(var(--brand-light)); }
+  .atlas-compass { position: absolute; top: 14px; left: 16px; display: grid; text-align: center; color: hsl(var(--brand-light)); font: 12px Georgia,serif; text-shadow: 0 1px 4px hsl(var(--background)); pointer-events: none; }
+  .atlas-compass span+span { font-size: 28px; line-height: 1; }
+  .atlas-controls { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; border: 1px solid hsl(var(--border)); background: hsl(var(--background) / .95); border-radius: 5px; overflow: hidden; }
+  .atlas-controls button { width: 40px; height: 42px; font-size: 22px; border-right: 1px solid var(--line); }
+  .atlas-controls output { font-size: 11px; min-width: 52px; text-align: center; }
+  .atlas-hint { font-size: .72rem; color: hsl(var(--muted-foreground)); line-height: 1.6; margin: .7rem 0; }
+  .atlas-popup { display: grid; grid-template-columns: 1fr auto; border: 1px solid hsl(var(--brand) / .4); background: hsl(var(--card)); padding: 1.2rem; border-radius: 5px; margin-top: 1rem; }
+  .atlas-popup h2 { font-family: Georgia,serif; font-size: 1.6rem; margin-top: .2rem; }
+  .atlas-kicker { color: hsl(var(--brand)); font-size: .65rem; text-transform: uppercase; letter-spacing: .15em; }
+  .atlas-popup>button { font-size: 24px; width: 44px; height: 44px; }
+  .atlas-popup>p { grid-column: 1/-1; font-size: .8rem; color: hsl(var(--muted-foreground)); line-height: 1.6; margin: .8rem 0; }
+  .atlas-guide { color: var(--accent); font-size: .8rem; }
+  .atlas-locations { border: 1px solid var(--line); background: hsl(var(--card)); border-radius: 6px; overflow: hidden; }
+  .atlas-list-heading { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid var(--line); }
+  .atlas-list-heading h2 { font-size: .8rem; font-weight: 600; }
+  .atlas-list-heading>span { background: hsl(var(--muted)); color: hsl(var(--brand)); border-radius: 20px; padding: 2px 9px; font-size: .7rem; }
+  .atlas-locations ul { list-style: none; margin: 0; padding: 0; max-height: 500px; overflow-y: auto; }
+  .atlas-locations li { border-bottom: 1px solid hsl(var(--border)); }
+  .atlas-locations li:last-child { border-bottom: 0; }
+  .atlas-locations li>a:first-child { padding: 1rem; display: flex; align-items: center; gap: .75rem; font-size: .8rem; text-decoration: none; }
+  .atlas-locations li>a:hover { background: hsl(var(--muted)); }
+  .atlas-locations strong { display: block; font-weight: 500; line-height: 1.5; }
+  .atlas-locations small { display: block; margin-top: .3rem; color: hsl(var(--muted-foreground)); font-size: .65rem; line-height: 1.5; }
+  .atlas-locations a>span:last-child { margin-left: auto; color: hsl(var(--brand)); }
+  .atlas-location-icon { color: hsl(var(--brand)); font-size: 25px; }
+  .atlas-locations .atlas-detail { display: block; margin: -.4rem 1rem 1rem 3.25rem; color: hsl(var(--brand)); font-size: .7rem; }
+  .atlas-empty { padding: 1rem; color: hsl(var(--muted-foreground)); font-size: .8rem; }
+  .atlas-provenance { display: flex; justify-content: space-between; gap: 2rem; margin-top: 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
+  .atlas-provenance h2 { font-size: .85rem; margin-bottom: .5rem; }
+  .atlas-provenance p { font-size: .75rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 48rem; }
+  .atlas-provenance>p { flex-shrink: 0; text-align: right; }
+  .atlas-provenance a { color: hsl(var(--brand)); }
+  .atlas-tabs { display: none; }
+  @media(max-width: 800px) {
+    .atlas-layout { grid-template-columns: 1fr; }
+    .atlas-tools { flex-wrap: wrap; gap: .7rem; }
+    .atlas-tools .atlas-search { flex-basis: 100%; }
+    .atlas-tabs { display: flex; gap: .4rem; margin: 0 0 1rem; }
+    .atlas-tabs button { padding: .6rem 1rem; font-size: .8rem; border: 1px solid var(--line); border-radius: 4px; }
+    .atlas-tabs button[aria-pressed=true] { background: hsl(var(--brand) / .2); border-color: hsl(var(--brand)); }
+    .atlas.is-enhanced[data-view=map] .atlas-locations, .atlas.is-enhanced[data-view=list] .atlas-map-panel { display: none; }
+    .atlas-provenance { display: block; }
+    .atlas-provenance>p { text-align: left; margin-top: 1rem; }
+  }
+</style>

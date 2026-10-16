@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components';
+import LocaleLayout from '~/components/layout/LocaleLayout.astro';
+import BannerAd from '~/components/ads/BannerAd.astro';
+import LoopMedia from '~/components/media/LoopMedia.astro';
+import { NAVIGATION_CONFIG } from '~/config/navigation';
+import { getUi } from '~/i18n/ui';
+import type { Locale } from '~/i18n/routing';
+import research from '~/data/research.json';
+interface Props { locale: Locale; jsonLd?:Record<string,unknown>[]; alternates?:Array<{hreflang:string;href:string}> }
+const {locale,jsonLd=[],alternates=[]}=Astro.props;
+const strings=getUi(locale),ui=strings.frontier;
+const starters=research.classes.filter(c=>c.starting);
+const guides=research.guides.filter(g=>g.category==='guides').slice(0,4);
+const nav=strings.nav as Record<string,string>;
+const stories=[{href:'/news/frosthaven-1-0-release/',image:6,title:ui.releaseTitle,text:ui.releaseText},{href:'/news/digital-1-0-changes/',image:11,title:ui.changesTitle,text:ui.changesText},{href:'/guides/digital-vs-tabletop/',image:1,title:ui.tabletopTitle,text:ui.tabletopText}];
+---
+<LocaleLayout locale={locale} title={strings.home.meta.title} description={strings.home.meta.description} jsonLd={jsonLd} alternates={alternates}>
+ <section class="home-hero">
+  <img class="hero-backdrop" src="/images/game/hero.webp" alt="" width="1920" height="1080" fetchpriority="high" />
+  <div class="hero-shade"></div>
+  <div class="hero-copy"><span class="eyebrow">{ui.eyebrow}</span><h1>{ui.heroTitle}<br /><em>{ui.heroSubtitle}</em></h1><p>{ui.heroDescription}</p>
+   <div class="hero-buttons"><a class="frontier-button primary" href="/guides/getting-started/">{ui.start}<Icon name="lucide:arrow-up-right" width="15" /></a><a class="frontier-button" href="/maps/"><Icon name="lucide:map" width="16" />{ui.mapCta}</a></div>
+   <div class="hero-meta"><span><i></i>{ui.version}</span><span>{ui.independent}</span></div>
+  </div>
+ </section>
+ <div class="home-content" data-pagefind-body>
+  <button class="hero-search" data-open-search><Icon name="lucide:search" width="18" />{ui.search}<kbd>CTRL K</kbd></button>
+  <nav class="library-nav" aria-label={ui.explore}>{NAVIGATION_CONFIG.map(n=><a href={`${n.path}/`}><Icon name={n.icon} /><span>{nav[n.key]}</span></a>)}</nav>
+  <section class="home-section">
+   <div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 01</span><h2>{ui.classesTitle}</h2><p>{ui.classesDescription}</p></div><a href="/classes/" class="section-link">{ui.allClasses} ↗</a></div>
+   <div class="class-grid">{starters.map(c=><a href={`/classes/${c.slug}/`} class="class-card"><img src={`/images/game/${c.slug}.webp`} alt={`${c.name} — ${ui.characterArt}`} width="380" height="550" loading="lazy" /><div class="class-card-info"><span class="eyebrow">{ui.starting}</span><h3>{c.name}</h3><p>{c.role}</p></div></a>)}</div>
+  </section>
+  <BannerAd position="content" />
+  <section class="home-section">
+   <div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 02</span><h2>{ui.guideTitle}</h2><p>{ui.guideDescription}</p></div><a href="/guides/" class="section-link">{ui.allGuides} ↗</a></div>
+   <div class="feature-grid"><a href="/guides/getting-started/" class="feature-story"><img src="/images/game/scene-04.webp" alt={ui.battleArt} width="1600" height="900" loading="lazy" /><div class="story-copy"><span class="eyebrow">{ui.start}</span><h3>{guides[0]?.title}</h3><p>{guides[0]?.summary}</p></div></a>
+    <div class="guide-stack">{guides.slice(1,4).map((g,i)=><a class="guide-row" href={`/${g.category}/${g.slug}/`}><img src={`/images/game/scene-${String([3,9,14][i]).padStart(2,'0')}-small.webp`} alt={ui.battleArt} width="680" height="383" loading="lazy" /><div><span class="eyebrow">{nav[g.category]}</span><h3>{g.title}</h3><p>{ui.readGuide} ↗</p></div></a>)}</div></div>
+   <LoopMedia index={2} title={ui.guideDescription} />
+  </section>
+  <section class="map-feature"><img src="/images/game/scene-17.webp" alt={ui.map.mapAlt} width="1600" height="900" loading="lazy" /><div class="map-feature-copy"><span class="eyebrow">{nav.maps}</span><h2>{ui.mapTitle}</h2><p>{ui.mapDescription}</p><a href="/maps/" class="frontier-button"><Icon name="lucide:compass" width="17" />{ui.mapCta} ↗</a></div></section>
+  <section class="home-section"><div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 03</span><h2>{ui.outpostTitle}</h2><p>{ui.outpostDescription}</p></div><a href="/outpost/" class="section-link">{ui.outpostCta} ↗</a></div>
+   <div class="feature-grid"><a class="feature-story" href="/outpost/outpost-planning/"><img src="/images/game/scene-15.webp" alt={ui.settlementArt} width="1600" height="900" loading="lazy" /><div class="story-copy"><span class="eyebrow">{nav.outpost}</span><h3>{ui.outpostCta}</h3></div></a><div><LoopMedia index={3} title={ui.outpostTitle} /><LoopMedia index={1} title={ui.classesTitle} /></div></div>
+  </section>
+  <section class="home-section"><div class="section-heading"><div><span class="eyebrow">{ui.fieldNotes} / 04</span><h2>{ui.latest}</h2><p>{ui.latestDescription}</p></div><a href="/news/" class="section-link">{ui.allNews} ↗</a></div>
+   <div class="news-grid">{stories.map(s=><a href={s.href} class="news-card"><img src={`/images/game/scene-${String(s.image).padStart(2,'0')}-small.webp`} alt={ui.battleArt} width="680" height="383" loading="lazy" /><div><small>{ui.version}</small><h3>{s.title}</h3><p>{s.text}</p></div></a>)}</div>
+  </section>
+  <section class="home-section"><div class="section-heading"><div><span class="eyebrow">{ui.eyebrow}</span><h2>{ui.gallery}</h2><p>{ui.galleryDescription}</p></div></div><div class="scenery-grid">{[8,12,14,16,4,17].map(i=><button data-gallery-src={`/images/game/scene-${String(i).padStart(2,'0')}.webp`} aria-label={ui.gallery}><img src={`/images/game/scene-${String(i).padStart(2,'0')}-small.webp`} alt={`${ui.gallery} — ${i}`} width="680" height="383" loading="lazy" /></button>)}</div></section>
+ </div>
+ <dialog class="lightbox" data-home-lightbox><button data-close-lightbox aria-label={nav.close}><Icon name="lucide:x" width="20" /></button><img src="/images/game/scene-08.webp" alt={ui.gallery} width="1600" height="900" /></dialog>
+</LocaleLayout>
+<script>
+document.addEventListener('keydown',e=>{if(e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();document.getElementById('search-trigger')?.click();}});
+const dialog=document.querySelector<HTMLDialogElement>('[data-home-lightbox]');
+document.querySelectorAll<HTMLElement>('[data-gallery-src]').forEach(button=>button.addEventListener('click',()=>{if(!dialog)return;dialog.querySelector('img')!.src=button.dataset.gallerySrc!;dialog.showModal();}));
+dialog?.querySelector('[data-close-lightbox]')?.addEventListener('click',()=>dialog.close());
+dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+</script>

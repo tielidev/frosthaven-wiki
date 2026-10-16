@@ -1,0 +1,12 @@
+---
+import LocaleLayout from '~/components/layout/LocaleLayout.astro';
+import { getUi } from '~/i18n/ui';
+const ui=getUi('en').frontier;
+---
+<LocaleLayout locale="en" title={ui.cookies} description={ui.consentStatus} noindex={true}>
+ <article class="prose dark:prose-invert mx-auto"><h1>{ui.cookies}</h1><p>{ui.consentStatus}</p><div class="flex flex-wrap gap-4"><button class="btn-primary" data-manage-consent>{ui.cookies}</button><button class="btn-outline" data-withdraw-consent>{ui.consentWithdraw}</button></div><p><a href="/privacy-policy/">{getUi('en').footer.privacyPolicy}</a></p></article>
+</LocaleLayout>
+<script>
+document.querySelector('[data-manage-consent]')?.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('aw:consent-open')));
+document.querySelector('[data-withdraw-consent]')?.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('aw:consent-reset')));
+</script>

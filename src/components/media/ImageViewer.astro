@@ -1,0 +1,13 @@
+---
+import { getUi } from '~/i18n/ui';
+const ui=getUi('en');
+---
+<dialog class="lightbox" data-article-viewer data-enlarge={ui.frontier.enlargeImage}>
+ <button type="button" data-viewer-close aria-label={ui.nav.close}>{ui.nav.close} ×</button>
+ <img data-viewer-image alt="" width="1600" height="900" />
+ <p data-viewer-caption class="text-sm text-muted-foreground"></p>
+</dialog>
+<script>
+const viewer=document.querySelector<HTMLDialogElement>('[data-article-viewer]');
+if(viewer){const show=(image:HTMLImageElement)=>{const target=viewer.querySelector<HTMLImageElement>('[data-viewer-image]')!;target.src=image.currentSrc||image.src;target.alt=image.alt;viewer.querySelector('[data-viewer-caption]')!.textContent=image.alt;viewer.showModal();};document.querySelectorAll<HTMLImageElement>('article .prose img, article .article-hero img').forEach(image=>{if(image.closest('button,a'))return;image.tabIndex=0;image.setAttribute('role','button');image.setAttribute('aria-label',`${viewer.dataset.enlarge}: ${image.alt}`);image.style.cursor='zoom-in';image.addEventListener('click',()=>show(image));image.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(image);}});});viewer.querySelector('[data-viewer-close]')?.addEventListener('click',()=>viewer.close());viewer.addEventListener('click',e=>{if(e.target===viewer)viewer.close();});}
+</script>

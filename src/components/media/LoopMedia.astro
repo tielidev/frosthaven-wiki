@@ -1,0 +1,16 @@
+---
+import { getUi } from '~/i18n/ui';
+interface Props { index: number; title: string; }
+const { index,title }=Astro.props;
+const ui=getUi('en').frontier;
+---
+<figure class="loop-media">
+ <video data-game-loop loop muted playsinline preload="none" poster={`/images/game/loop-${index}.webp`} aria-label={title} width="616" height="144">
+  <source data-src={`/images/game/loop-${index}.webm`} type="video/webm" />
+ </video>
+ <figcaption><span>{title}</span><button type="button" data-loop-toggle data-pause={ui.pause} data-play={ui.play} aria-label={ui.play}>{ui.play}</button></figcaption>
+</figure>
+<script>
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelectorAll<HTMLElement>('.loop-media').forEach(root=>{const video=root.querySelector('video')!;const button=root.querySelector<HTMLButtonElement>('button')!;let manual=false;const load=()=>{video.querySelectorAll<HTMLSourceElement>('source[data-src]').forEach(s=>{s.src=s.dataset.src!;delete s.dataset.src;});if(video.readyState===0)video.load();};const update=()=>{button.textContent=video.paused?button.dataset.play!:button.dataset.pause!;button.setAttribute('aria-label',button.textContent);};button.addEventListener('click',()=>{manual=true;load();if(video.paused)void video.play().catch(()=>{});else video.pause();});video.addEventListener('play',update);video.addEventListener('pause',update);new IntersectionObserver(([entry])=>{if(!entry.isIntersecting){video.pause();return;}if(!reduced.matches&&!manual){load();void video.play().catch(()=>{});}},{threshold:.25}).observe(video);reduced.addEventListener('change',()=>{if(reduced.matches)video.pause();});});
+</script>

@@ -1,0 +1,378 @@
+{
+  "$schema": "../../docs/home.schema.json",
+  "site": {
+    "name": "Frosthaven Wiki",
+    "shortName": "Frosthaven Wiki",
+    "description": "Explore Frosthaven digital with class builds, scenario guides, maps, equipment and outpost strategy, with sources and version notes.",
+    "tagline": "Your field guide to the frozen frontier",
+    "legalNotice": "An independent fan wiki. Not affiliated with Snapshot Games, Arc Games or Cephalofair Games. Game artwork belongs to its respective owners."
+  },
+  "nav": {
+    "home": "Home",
+    "toggleTheme": "Toggle theme",
+    "menu": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "language": "Language",
+    "guides": "Guides",
+    "classes": "Classes",
+    "builds": "Builds",
+    "maps": "Maps",
+    "scenarios": "Scenarios",
+    "items": "Items",
+    "enemies": "Enemies",
+    "outpost": "Outpost",
+    "mechanics": "Mechanics",
+    "news": "News"
+  },
+  "search": {
+    "placeholder": "Search classes, scenarios, items or a number…",
+    "noResults": "No matches found",
+    "loadError": "Search failed to load — refresh the page and try again."
+  },
+  "shared": {
+    "lastUpdated": "Last updated",
+    "publishedOn": "Published",
+    "noArticles": "No articles yet. Check back soon!",
+    "defaultListDescription": "Browse every {title} article — walkthroughs, tips, tier lists and up-to-date reference tables, all in one place.",
+    "relatedArticles": "Related Articles",
+    "onThisPage": "On this page",
+    "browseAll": "Browse all",
+    "viewAll": "View all",
+    "commentsHeading": "Comments",
+    "share": "Share",
+    "copyLink": "Copy link",
+    "copied": "Copied!",
+    "consentText": "Optional ads may use cookies and similar technologies. Accept to load advertising, or decline to keep optional advertising off. ",
+    "accept": "Accept",
+    "decline": "Decline",
+    "consentTitle": "Cookies",
+    "bossCard": {
+      "title": "Boss Overview",
+      "hp": "HP",
+      "weakness": "Weakness",
+      "resistant": "Resistant",
+      "location": "Location",
+      "level": "Rec. Level"
+    },
+    "codesTable": {
+      "active": "Active Codes",
+      "expired": "Expired Codes",
+      "reward": "Reward",
+      "expires": "Expires",
+      "source": "Source",
+      "code": "Code"
+    },
+    "codesFaq": [
+      {
+        "question": "",
+        "answer": ""
+      }
+    ],
+    "possiblyOutdated": "This guide was last checked on",
+    "outdatedNote": "— the game may have changed since. Some details could be out of date.",
+    "prevArticle": "Previous",
+    "nextArticle": "Next",
+    "minuteRead": "min read",
+    "wasThisHelpful": "Was this helpful?",
+    "feedbackThanks": "Thank you. You can report a correction through the contact page.",
+    "sponsoredLabel": "Sponsored",
+    "relatedVideos": "Related videos",
+    "gallery": "Gallery",
+    "gameVersion": "Game version",
+    "allTags": "All Tags",
+    "tagsIndexDescription": "Browse all articles by topic.",
+    "articlesCount": "articles",
+    "recentTitle": "Recent Updates",
+    "recentDescription": "The latest articles and updates across the wiki, newest first.",
+    "sponsorTitle": "Support this wiki",
+    "sponsorText": "If these guides helped you, consider supporting the site.",
+    "sponsorButton": "Support us",
+    "notFoundSearchHint": "Try searching the wiki instead.",
+    "notFoundPopular": "Popular pages",
+    "notFoundTitle": "404 - Page Not Found",
+    "notFoundDescription": "The page you are looking for does not exist.",
+    "notFoundHeading": "Page Not Found",
+    "notFoundText": "The page you are looking for might have been removed or is temporarily unavailable.",
+    "notFoundBackHome": "Back to home",
+    "galleryLabels": {
+      "close": "Close",
+      "prev": "Previous image",
+      "next": "Next image"
+    },
+    "quickAnswer": "Quick Answer",
+    "skipToContent": "Skip to content",
+    "tapToCopy": "Tap to copy",
+    "open": "Open",
+    "playVideo": "Play video",
+    "watchVideo": "Watch video",
+    "gameTrailer": "trailer",
+    "closeAd": "Close ad",
+    "adLabel": "Advertisement",
+    "codesFaqTitle": "Codes FAQ",
+    "faqTitle": "FAQ",
+    "toggleTheme": "Toggle theme",
+    "themeToggleTitle": "Light / Dark / AMOLED black",
+    "fallbackNotice": "English fallback",
+    "copyQuickAnswer": "Copy quick answer",
+    "feedbackYes": "Yes",
+    "feedbackNo": "No",
+    "breadcrumbAria": "Breadcrumb",
+    "wikiNavAria": "Wiki navigation",
+    "paginationAria": "Article pagination"
+  },
+  "overview": {
+    "guides": {
+      "overviewTitle": "Guides",
+      "overviewDescription": "A practical path through the digital edition: starting parties, card economy, combat, co-op and campaign progression."
+    },
+    "classes": {
+      "overviewTitle": "Classes",
+      "overviewDescription": "Discover every mercenary, from the six starting classes to the full unlockable roster. Compare mechanics and find a build."
+    },
+    "builds": {
+      "overviewTitle": "Class builds",
+      "overviewDescription": "Build around a clear role: card choices, equipment priorities, party support and the decisions that keep your mercenary effective."
+    },
+    "maps": {
+      "overviewTitle": "Maps",
+      "overviewDescription": "Explore the digital world map and connect verified locations to scenario and settlement guides."
+    },
+    "scenarios": {
+      "overviewTitle": "Scenarios",
+      "overviewDescription": "Find scenarios by number, read verified rules and patch notes, and prepare your party for the next objective."
+    },
+    "items": {
+      "overviewTitle": "Items & crafting",
+      "overviewDescription": "Equipment, materials and crafting references, with digital-version evidence and links to relevant strategies."
+    },
+    "enemies": {
+      "overviewTitle": "Enemies & bosses",
+      "overviewDescription": "Understand the opposition: target selection, movement, enemy abilities and named encounters documented in the digital edition."
+    },
+    "outpost": {
+      "overviewTitle": "The outpost",
+      "overviewDescription": "Build and defend Frosthaven. Plan resources, buildings, crafting and the campaign decisions between expeditions."
+    },
+    "mechanics": {
+      "overviewTitle": "Game mechanics",
+      "overviewDescription": "Understand actions, initiative, elements, conditions and summons before spending the cards your party needs to survive."
+    },
+    "news": {
+      "overviewTitle": "News & updates",
+      "overviewDescription": "Official release news and patch analysis, with original sources and links to the guides affected by each update."
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Frosthaven Wiki — Classes, Builds, Maps & Guides",
+      "description": "Explore Frosthaven digital with class builds, scenario guides, maps, equipment and outpost strategy, with sources and version notes."
+    },
+    "updates": {
+      "title": "Recent updates"
+    },
+    "popular": {
+      "badge": "Popular",
+      "title": "Most read",
+      "quickLinks": [
+        {
+          "label": "Guides",
+          "href": "/guides"
+        },
+        {
+          "label": "Classes",
+          "href": "/classes"
+        },
+        {
+          "label": "Builds",
+          "href": "/builds"
+        }
+      ]
+    },
+    "closingCta": {
+      "title": "Start your Frosthaven journey",
+      "description": "Bookmark this wiki and check back after every game update.",
+      "primary": "Browse all",
+      "secondary": "Join the community"
+    },
+    "hero": {
+      "badge": "Frosthaven",
+      "title": "Frosthaven Wiki",
+      "description": "Complete Frosthaven guides — bosses, items, and progression.",
+      "ctaPrimary": "Start reading",
+      "ctaSecondary": "Browse all"
+    },
+    "start": {
+      "badge": "Quick start",
+      "title": "New here?",
+      "cards": [
+        {
+          "number": "1",
+          "title": "Guides",
+          "description": "Browse guides",
+          "icon": "lucide:book-open",
+          "href": "/guides"
+        },
+        {
+          "number": "2",
+          "title": "Classes",
+          "description": "Browse classes",
+          "icon": "lucide:book-open",
+          "href": "/classes"
+        },
+        {
+          "number": "3",
+          "title": "Builds",
+          "description": "Browse builds",
+          "icon": "lucide:book-open",
+          "href": "/builds"
+        },
+        {
+          "number": "4",
+          "title": "Maps",
+          "description": "Browse maps",
+          "icon": "lucide:book-open",
+          "href": "/maps"
+        }
+      ]
+    },
+    "explore": {
+      "title": "Explore",
+      "description": "Content modules",
+      "modules": []
+    },
+    "faq": {
+      "title": "Frosthaven digital FAQ",
+      "description": "Quick answers about the digital edition, wiki coverage, classes, maps and advertising.",
+      "items": [
+        {
+          "question": "Which version does this wiki cover?",
+          "answer": "The PC digital edition, using version 1.0 as its release baseline. Articles identify their sources and the date they were researched."
+        },
+        {
+          "question": "Are all seventeen classes available immediately?",
+          "answer": "No. Six classes are available at the start. Other classes unlock as the campaign progresses."
+        },
+        {
+          "question": "Does this wiki contain a complete Codex?",
+          "answer": "Not yet. It has all seventeen class introductions and build frameworks, but item statistics, exact level choices and scenario walkthroughs remain partially researched."
+        },
+        {
+          "question": "Why do some scenarios have no map pin?",
+          "answer": "Only locations identifiable in official digital map imagery are plotted. Unverified coordinates are not invented."
+        },
+        {
+          "question": "Do I need to accept ads to read the guides?",
+          "answer": "No. Declining optional advertising leaves the guides available. You can change your choice on the Cookie preferences page."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "playGame": "Play Frosthaven",
+    "officialDiscord": "Official Discord",
+    "officialYoutube": "Official YouTube",
+    "officialTwitter": "Official Twitter",
+    "officialReddit": "Official Reddit",
+    "about": "About",
+    "faq": "FAQ",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "Copyright",
+    "contact": "Contact",
+    "copyrightText": "© 2026 Frosthaven Wiki. All rights reserved.",
+    "community": "Community",
+    "legal": "Legal"
+  },
+  "frontier": {
+    "eyebrow": "FROSTHAVEN · DIGITAL EDITION",
+    "heroTitle": "Know the North.",
+    "heroSubtitle": "Master the adventure.",
+    "heroDescription": "Your companion to the frozen frontier. Find your class, plan your next expedition, and build a settlement worth fighting for.",
+    "explore": "Explore the wiki",
+    "start": "Start your adventure",
+    "search": "Search classes, scenarios, items…",
+    "searchHint": "Press / or Ctrl K to search",
+    "version": "1.0 · Full release",
+    "independent": "Independent player reference",
+    "browse": "The expedition library",
+    "browseDescription": "Everything you need before you leave the gates.",
+    "classesTitle": "Choose your mercenary",
+    "classesDescription": "Six starting classes. Seventeen ways to face the wilderness.",
+    "allClasses": "Meet all 17 classes",
+    "starting": "Starting class",
+    "unlockable": "Unlockable class",
+    "guideTitle": "Before your first expedition",
+    "guideDescription": "Learn the rhythm of combat. Make every card count.",
+    "allGuides": "All guides",
+    "mapTitle": "The North awaits.",
+    "mapDescription": "Explore the world, find the settlement, and connect your next destination to its guide.",
+    "mapCta": "Open the world map",
+    "latest": "From the frontier",
+    "latestDescription": "Release news, updates, and what they mean for your campaign.",
+    "allNews": "All news",
+    "fieldNotes": "FIELD NOTES",
+    "outpostTitle": "Between expeditions",
+    "outpostDescription": "Turn a fragile foothold into a thriving outpost. Learn when to build, what to craft, and how to prepare for winter.",
+    "outpostCta": "Build your outpost",
+    "readGuide": "Read guide",
+    "role": "Role",
+    "filter": "Filter entries by name, number or keyword",
+    "all": "All entries",
+    "noResults": "No matching entries. Try another name or number.",
+    "sources": "Sources & verification",
+    "verified": "Last researched",
+    "versionLabel": "Game version",
+    "editorial": "Strategy guidance is editorial advice, not a claim of a completed in-game test.",
+    "mediaCredit": "Official game promotional image. Artwork belongs to its respective owners.",
+    "gallery": "A glimpse of the frozen frontier",
+    "galleryDescription": "Real in-game environments from the official digital edition.",
+    "pause": "Pause animation",
+    "play": "Play animation",
+    "cookies": "Cookie preferences",
+    "consentWithdraw": "Withdraw consent",
+    "consentStatus": "Optional advertising is off until you accept. You can change your choice here at any time.",
+    "aboutLabel": "Editorial policy & credits",
+    "contactLabel": "Report an error",
+    "map": {
+      "title": "World map",
+      "description": "Explore the Frosthaven digital world map, inspect verified locations, and find related scenario and outpost guides.",
+      "eyebrow": "EXPLORE THE FROZEN NORTH",
+      "intro": "A closer look at the frontier, using the official digital world map.",
+      "search": "Search locations or scenario numbers",
+      "region": "Region",
+      "type": "Marker type",
+      "allRegions": "All regions",
+      "allTypes": "All types",
+      "mapView": "Map",
+      "listView": "Locations",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "reset": "Reset map",
+      "instructions": "Drag to move. Use the controls or pinch to zoom. Select a marker to open its field notes.",
+      "locations": "Locations & guides",
+      "noResults": "No matching locations.",
+      "openGuide": "Open guide",
+      "source": "Map source",
+      "unlocated": "Location not yet verified on this map",
+      "verified": "Verified visual location",
+      "close": "Close details",
+      "countSuffix": "locations",
+      "coverageTitle": "Map coverage",
+      "coverageBody": "Only locations identifiable in the official digital screenshot are plotted. Scenario entries without verified coordinates remain in the searchable list rather than being assigned invented positions.",
+      "mapAlt": "Official Frosthaven digital world map showing the coastal settlement, frozen mountains and northern ice.",
+      "settlement": "Settlement",
+      "frosthavenRegion": "Frosthaven coast"
+    },
+    "releaseTitle": "Frosthaven 1.0 is here",
+    "releaseText": "The full campaign, all seventeen heroes, and the next chapter for the frozen frontier.",
+    "changesTitle": "What changed in 1.0?",
+    "changesText": "Codex, hero retraining, scenario rules and the updates that affect your next expedition.",
+    "tabletopTitle": "From tabletop to desktop",
+    "tabletopText": "Understand which references transfer, and where the digital edition needs its own field notes.",
+    "characterArt": "official character artwork",
+    "battleArt": "Official Frosthaven digital tactical combat screenshot",
+    "settlementArt": "The Frosthaven settlement in winter",
+    "enlargeImage": "Enlarge image"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "frosthaven-frontier",
+  "background": "/images/game/scene-17.webp",
+  "width": 1600,
+  "height": 900,
+  "source": "https://store.steampowered.com/app/2347080/Frosthaven/",
+  "verified": "2026-10-16",
+  "markers": [
+    {
+      "id": "frosthaven",
+      "title": "Frosthaven",
+      "x": 65,
+      "y": 32,
+      "region": "frosthaven",
+      "type": "settlement",
+      "href": "/outpost/",
+      "source": "https://store.steampowered.com/app/2347080/Frosthaven/",
+      "notes": "Approximate position of the visible settlement in the official promotional world-map screenshot; not an in-game scenario coordinate."
+    }
+  ]
+}

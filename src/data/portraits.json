@@ -1,0 +1,26 @@
+[
+  {
+    "name": "geminate",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Geminate.webp"
+  },
+  {
+    "name": "drifter",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Drifter.webp"
+  },
+  {
+    "name": "deathwalker",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Deathwalker.webp"
+  },
+  {
+    "name": "boneshaper",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Boneshaper.webp"
+  },
+  {
+    "name": "banner-spear",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Banner%20Spear.webp"
+  },
+  {
+    "name": "blinkblade",
+    "url": "https://cdn.playfrosthaven.com/fhv_assets/images/home/hero/Blinkblade.webp"
+  }
+]
